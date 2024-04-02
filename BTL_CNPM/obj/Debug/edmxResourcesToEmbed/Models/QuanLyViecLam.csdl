@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QlyViecLamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblQuyenHan">
+    <Key>
+      <PropertyRef Name="sMaQuyen" />
+    </Key>
+    <Property Name="sMaQuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sTenQuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblTaiKhoans" Relationship="Self.FK__tblTaiKho__sMaQu__267ABA7A" FromRole="tblQuyenHan" ToRole="tblTaiKhoan" />
+  </EntityType>
+  <EntityType Name="tblTaiKhoan">
+    <Key>
+      <PropertyRef Name="sMaTK" />
+    </Key>
+    <Property Name="sMaTK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sMaNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sMaQuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sTaiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="sMatKhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="sTinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblQuyenHan" Relationship="Self.FK__tblTaiKho__sMaQu__267ABA7A" FromRole="tblTaiKhoan" ToRole="tblQuyenHan" />
+  </EntityType>
+  <Association Name="FK__tblTaiKho__sMaQu__267ABA7A">
+    <End Role="tblQuyenHan" Type="Self.tblQuyenHan" Multiplicity="0..1" />
+    <End Role="tblTaiKhoan" Type="Self.tblTaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblQuyenHan">
+        <PropertyRef Name="sMaQuyen" />
+      </Principal>
+      <Dependent Role="tblTaiKhoan">
+        <PropertyRef Name="sMaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QlyViecLamEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblQuyenHans" EntityType="Self.tblQuyenHan" />
+    <EntitySet Name="tblTaiKhoans" EntityType="Self.tblTaiKhoan" />
+    <AssociationSet Name="FK__tblTaiKho__sMaQu__267ABA7A" Association="Self.FK__tblTaiKho__sMaQu__267ABA7A">
+      <End Role="tblQuyenHan" EntitySet="tblQuyenHans" />
+      <End Role="tblTaiKhoan" EntitySet="tblTaiKhoans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

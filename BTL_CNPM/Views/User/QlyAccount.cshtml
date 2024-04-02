@@ -1,0 +1,123 @@
+﻿@model IEnumerable<BTL_CNPM.Models.tblTaiKhoan>
+@{
+    Layout = "~/Views/Shared/AccountMasterpage.cshtml";
+}
+
+@if (Session["user"] != null)
+{
+    <section>
+        <h1>Quản lý Tài khoản</h1>
+        <!-- TABLE CONSTRUCTION-->
+        <table id="GFGtable" class="table table-striped table-hover">
+            <tr>
+                <!-- TABLE HEADING -->
+                <th>STT</th>
+                <th>Tài khoản</th>
+                <th>Mật khẩu</th>
+                <th>Trạng thái</th>
+                <th>Tác vụ</th>
+            </tr>
+            <!-- TABLE DATA -->
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="mtaikhoan">@item.sMaTK</td>
+                    <td class="taikhoan">@item.sTaiKhoan</td>
+                    <td class="matkhau">@item.sMatKhau</td>
+                    <td class="tinhtrang">@item.sTinhTrang</td>
+                    <td>
+                        <button class="gfgselect btn btn-info"
+                                data-toggle="modal"
+                                data-target="#gfgmodal">
+                            Sửa
+                        </button>
+                        <button class="gfgselect btn btn-danger"
+                                data-toggle="modal"
+                                data-target="#deleteEmployeeModal">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </section>
+    <!-- Edit Modal HTML -->
+    <div class="modal fade"
+         id="gfgmodal"
+         tabindex="-1"
+         role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- MODEL TITLE -->
+                    <h2 class="modal-title"
+                        id="gfgmodallabel">
+                        Chỉnh sửa thông tin
+                    </h2>
+                    <button type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                </div>
+                <!-- MODEL BODY -->
+                <div class="modal-body">
+                    <div class="GFGclass"
+                         id="divGFG">
+                        <form action="./CapNhatAccount" method="post">
+                            <div class="form-group">
+                                <label for="exampleInputTaikhoan">Tài khoản</label>
+                                <input type="hidden" class="form-control" id="exampleInputMTaikhoan" placeholder="Tài khoản" name="mataikhoan">
+                                <input type="text" class="form-control" id="exampleInputTaikhoan" placeholder="Tài khoản" name="taikhoan">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputMK">Mật khẩu</label>
+                                <input type="password" class="form-control" id="exampleInputMK" aria-describedby="emailHelp" placeholder="Mật khẩu" name="matkhau">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTT">Tình trạng</label>
+                                <input type="text" class="form-control" id="exampleInputTT" placeholder="Tình trạng" name="tinhtrang">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button"
+                                    class="btn btn-danger"
+                                    data-dismiss="modal">
+                                Hủy
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Modal HTML -->
+    <div id="deleteEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="./XoaAccount">
+                    <input type="hidden" class="form-control" id="exampleInputSTaikhoan" placeholder="Tài khoản" name="mataikhoan">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Xóa tài khoản</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Bạn có chắc muốn xóa tài khoản này chứ???</p>
+                        <p class="text-warning"><small>Hành động này không thể hoàn tác.</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>Bạn không được truy cập vào trang hiện tại</p>
+}    

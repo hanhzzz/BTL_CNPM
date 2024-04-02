@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QlyViecLamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblQuyenHan">
+          <Key>
+            <PropertyRef Name="sMaQuyen" />
+          </Key>
+          <Property Name="sMaQuyen" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="sTenQuyen" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblTaiKhoan">
+          <Key>
+            <PropertyRef Name="sMaTK" />
+          </Key>
+          <Property Name="sMaTK" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="sMaNV" Type="varchar" MaxLength="10" />
+          <Property Name="sMaQuyen" Type="varchar" MaxLength="10" />
+          <Property Name="sTaiKhoan" Type="varchar" MaxLength="20" />
+          <Property Name="sMatKhau" Type="varchar" MaxLength="20" />
+          <Property Name="sTinhTrang" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__tblTaiKho__sMaQu__267ABA7A">
+          <End Role="tblQuyenHan" Type="Self.tblQuyenHan" Multiplicity="0..1" />
+          <End Role="tblTaiKhoan" Type="Self.tblTaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuyenHan">
+              <PropertyRef Name="sMaQuyen" />
+            </Principal>
+            <Dependent Role="tblTaiKhoan">
+              <PropertyRef Name="sMaQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QlyViecLamModelStoreContainer">
+          <EntitySet Name="tblQuyenHan" EntityType="Self.tblQuyenHan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTaiKhoan" EntityType="Self.tblTaiKhoan" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblTaiKho__sMaQu__267ABA7A" Association="Self.FK__tblTaiKho__sMaQu__267ABA7A">
+            <End Role="tblQuyenHan" EntitySet="tblQuyenHan" />
+            <End Role="tblTaiKhoan" EntitySet="tblTaiKhoan" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QlyViecLamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblQuyenHan">
+          <Key>
+            <PropertyRef Name="sMaQuyen" />
+          </Key>
+          <Property Name="sMaQuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sTenQuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblTaiKhoans" Relationship="Self.FK__tblTaiKho__sMaQu__267ABA7A" FromRole="tblQuyenHan" ToRole="tblTaiKhoan" />
+        </EntityType>
+        <EntityType Name="tblTaiKhoan">
+          <Key>
+            <PropertyRef Name="sMaTK" />
+          </Key>
+          <Property Name="sMaTK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sMaNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="sMaQuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="sTaiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="sMatKhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="sTinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblQuyenHan" Relationship="Self.FK__tblTaiKho__sMaQu__267ABA7A" FromRole="tblTaiKhoan" ToRole="tblQuyenHan" />
+        </EntityType>
+        <Association Name="FK__tblTaiKho__sMaQu__267ABA7A">
+          <End Role="tblQuyenHan" Type="Self.tblQuyenHan" Multiplicity="0..1" />
+          <End Role="tblTaiKhoan" Type="Self.tblTaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuyenHan">
+              <PropertyRef Name="sMaQuyen" />
+            </Principal>
+            <Dependent Role="tblTaiKhoan">
+              <PropertyRef Name="sMaQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QlyViecLamEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblQuyenHans" EntityType="Self.tblQuyenHan" />
+          <EntitySet Name="tblTaiKhoans" EntityType="Self.tblTaiKhoan" />
+          <AssociationSet Name="FK__tblTaiKho__sMaQu__267ABA7A" Association="Self.FK__tblTaiKho__sMaQu__267ABA7A">
+            <End Role="tblQuyenHan" EntitySet="tblQuyenHans" />
+            <End Role="tblTaiKhoan" EntitySet="tblTaiKhoans" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QlyViecLamModelStoreContainer" CdmEntityContainer="QlyViecLamEntities">
+          <EntitySetMapping Name="tblQuyenHans">
+            <EntityTypeMapping TypeName="QlyViecLamModel.tblQuyenHan">
+              <MappingFragment StoreEntitySet="tblQuyenHan">
+                <ScalarProperty Name="sMaQuyen" ColumnName="sMaQuyen" />
+                <ScalarProperty Name="sTenQuyen" ColumnName="sTenQuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTaiKhoans">
+            <EntityTypeMapping TypeName="QlyViecLamModel.tblTaiKhoan">
+              <MappingFragment StoreEntitySet="tblTaiKhoan">
+                <ScalarProperty Name="sMaTK" ColumnName="sMaTK" />
+                <ScalarProperty Name="sMaNV" ColumnName="sMaNV" />
+                <ScalarProperty Name="sMaQuyen" ColumnName="sMaQuyen" />
+                <ScalarProperty Name="sTaiKhoan" ColumnName="sTaiKhoan" />
+                <ScalarProperty Name="sMatKhau" ColumnName="sMatKhau" />
+                <ScalarProperty Name="sTinhTrang" ColumnName="sTinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

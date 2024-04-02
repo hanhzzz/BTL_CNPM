@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QlyViecLamModelStoreContainer" CdmEntityContainer="QlyViecLamEntities">
+    <EntitySetMapping Name="tblQuyenHans">
+      <EntityTypeMapping TypeName="QlyViecLamModel.tblQuyenHan">
+        <MappingFragment StoreEntitySet="tblQuyenHan">
+          <ScalarProperty Name="sMaQuyen" ColumnName="sMaQuyen" />
+          <ScalarProperty Name="sTenQuyen" ColumnName="sTenQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTaiKhoans">
+      <EntityTypeMapping TypeName="QlyViecLamModel.tblTaiKhoan">
+        <MappingFragment StoreEntitySet="tblTaiKhoan">
+          <ScalarProperty Name="sMaTK" ColumnName="sMaTK" />
+          <ScalarProperty Name="sMaNV" ColumnName="sMaNV" />
+          <ScalarProperty Name="sMaQuyen" ColumnName="sMaQuyen" />
+          <ScalarProperty Name="sTaiKhoan" ColumnName="sTaiKhoan" />
+          <ScalarProperty Name="sMatKhau" ColumnName="sMatKhau" />
+          <ScalarProperty Name="sTinhTrang" ColumnName="sTinhTrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

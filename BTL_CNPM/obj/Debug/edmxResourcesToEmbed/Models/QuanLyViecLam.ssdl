@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QlyViecLamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblQuyenHan">
+    <Key>
+      <PropertyRef Name="sMaQuyen" />
+    </Key>
+    <Property Name="sMaQuyen" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="sTenQuyen" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tblTaiKhoan">
+    <Key>
+      <PropertyRef Name="sMaTK" />
+    </Key>
+    <Property Name="sMaTK" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="sMaNV" Type="varchar" MaxLength="10" />
+    <Property Name="sMaQuyen" Type="varchar" MaxLength="10" />
+    <Property Name="sTaiKhoan" Type="varchar" MaxLength="20" />
+    <Property Name="sMatKhau" Type="varchar" MaxLength="20" />
+    <Property Name="sTinhTrang" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__tblTaiKho__sMaQu__267ABA7A">
+    <End Role="tblQuyenHan" Type="Self.tblQuyenHan" Multiplicity="0..1" />
+    <End Role="tblTaiKhoan" Type="Self.tblTaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblQuyenHan">
+        <PropertyRef Name="sMaQuyen" />
+      </Principal>
+      <Dependent Role="tblTaiKhoan">
+        <PropertyRef Name="sMaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QlyViecLamModelStoreContainer">
+    <EntitySet Name="tblQuyenHan" EntityType="Self.tblQuyenHan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTaiKhoan" EntityType="Self.tblTaiKhoan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblTaiKho__sMaQu__267ABA7A" Association="Self.FK__tblTaiKho__sMaQu__267ABA7A">
+      <End Role="tblQuyenHan" EntitySet="tblQuyenHan" />
+      <End Role="tblTaiKhoan" EntitySet="tblTaiKhoan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
