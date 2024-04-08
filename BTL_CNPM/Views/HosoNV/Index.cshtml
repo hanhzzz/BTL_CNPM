@@ -1,0 +1,48 @@
+﻿@model List<BTL_CNPM.Models.HOSONHANVIEN> 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/HomeMasterpage.cshtml";
+}
+
+<h2>Index</h2>
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>Ma nhan vien</th>
+            <td>@item.MANHANVIEN</td>
+        </tr>
+        <tr>
+            <td><a href="/HosoNV/Edit/@item.MANHANVIEN">edit</a></td>
+            <td><a href="/HosoNV/Delete/@item.MANHANVIEN">delete</a></td>
+        </tr>
+        <tr>
+            <th>Ma ho so</th>
+            <td>@item.MAHOSO</td>
+        </tr>
+        <tr>
+            <th>Ten nhan vien</th>
+            <td>@item.TENNHANVIEN</td>
+        </tr>
+        <tr>
+            <th>Ngay lap</th>
+            <td>@item.NGAYLAP</td>
+        </tr>
+        <tr>
+            <th>Vi tri</th>
+            <td>@item.VITRI</td>
+        </tr>
+        <tr>
+            <th>Ngay sinh</th>
+            <td>@item.NGAYSINH</td>
+        </tr>
+        <tr>
+            <th>Dia chi</th>
+            <td>@item.DIACHI</td>
+        </tr>
+        <tr>
+            <th>So dien thoai</th>
+            <td>@item.SDT</td>
+        </tr>
+    }
+</table>

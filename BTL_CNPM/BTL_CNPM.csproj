@@ -129,9 +129,28 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HosoNVController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOSONHANVIEN.cs">
+      <DependentUpon>HosoNV.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HosoNV.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HosoNV.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HosoNV.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HosoNV.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HosoNV.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HosoNV.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\QuanLyViecLam.Context.cs">
       <AutoGen>True</AutoGen>
@@ -220,6 +239,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\HosoNV.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HosoNV.edmx</DependentUpon>
+      <LastGenOutput>HosoNV.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HosoNV.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HosoNV.edmx</DependentUpon>
+      <LastGenOutput>HosoNV.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\QuanLyViecLam.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>QuanLyViecLam.Context.cs</LastGenOutput>
@@ -326,6 +355,13 @@
     <Content Include="Models\QuanLyViecLam.edmx.diagram">
       <DependentUpon>QuanLyViecLam.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\HosoNV.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HosoNV.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HosoNV.edmx.diagram">
+      <DependentUpon>HosoNV.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -360,6 +396,10 @@
     <Content Include="Views\User\QlyAccount.cshtml" />
     <Content Include="Views\Shared\AccountMasterpage.cshtml" />
     <Content Include="Views\User\QlyViecLam.cshtml" />
+    <Content Include="Views\HosoNV\TaoHoso.cshtml" />
+    <Content Include="Views\HosoNV\Index.cshtml" />
+    <Content Include="Views\HosoNV\Edit.cshtml" />
+    <Content Include="Views\HosoNV\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

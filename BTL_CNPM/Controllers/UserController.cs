@@ -57,11 +57,13 @@ namespace BTL_CNPM.Controllers
                     if (item.sMaQuyen == "1")
                     {
                         Session["user"] = item.sTaiKhoan;
+                        Session["IDuser"] = item.sMaTK;
                         return RedirectToAction("QlyAccount");
                     }
                     else
                     {
                         Session["user"]=item.sTaiKhoan;
+                        Session["IDuser"] = item.sMaTK;
                         return RedirectToAction("../Home/Index");
                     }
                 }
