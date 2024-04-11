@@ -131,6 +131,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HosoNVController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VieclamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -152,6 +153,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HosoNV.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\QLViecLam.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLViecLam.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLViecLam.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLViecLam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLViecLam.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLViecLam.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\QuanLyViecLam.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -167,11 +183,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyViecLam.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>QLViecLam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblChucVu.cs">
+      <DependentUpon>QLViecLam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblDanhSachUngTuyen.cs">
+      <DependentUpon>QLViecLam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblHopDong.cs">
+      <DependentUpon>QLViecLam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblNhanVien.cs">
+      <DependentUpon>QLViecLam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblPhongBan.cs">
+      <DependentUpon>QLViecLam.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblQuyenHan.cs">
-      <DependentUpon>QuanLyViecLam.tt</DependentUpon>
+      <DependentUpon>QLViecLam.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblTaiKhoan.cs">
-      <DependentUpon>QuanLyViecLam.tt</DependentUpon>
+      <DependentUpon>QLViecLam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblThongBao.cs">
+      <DependentUpon>QLViecLam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblThongTinTuyenDung.cs">
+      <DependentUpon>QLViecLam.tt</DependentUpon>
     </Compile>
     <Compile Include="Objects\DanhSachTaiKhoan.cs" />
     <Compile Include="Objects\Jobs.cs" />
@@ -248,6 +288,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HosoNV.edmx</DependentUpon>
       <LastGenOutput>HosoNV.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\QLViecLam.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLViecLam.edmx</DependentUpon>
+      <LastGenOutput>QLViecLam.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\QLViecLam.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLViecLam.edmx</DependentUpon>
+      <LastGenOutput>QLViecLam.cs</LastGenOutput>
     </Content>
     <Content Include="Models\QuanLyViecLam.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -362,6 +412,13 @@
     <Content Include="Models\HosoNV.edmx.diagram">
       <DependentUpon>HosoNV.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\QLViecLam.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLViecLam.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QLViecLam.edmx.diagram">
+      <DependentUpon>QLViecLam.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -396,10 +453,14 @@
     <Content Include="Views\User\QlyAccount.cshtml" />
     <Content Include="Views\Shared\AccountMasterpage.cshtml" />
     <Content Include="Views\User\QlyViecLam.cshtml" />
-    <Content Include="Views\HosoNV\TaoHoso.cshtml" />
-    <Content Include="Views\HosoNV\Index.cshtml" />
-    <Content Include="Views\HosoNV\Edit.cshtml" />
-    <Content Include="Views\HosoNV\Delete.cshtml" />
+    <Content Include="Views\Vieclam\AdminQlyViecLam.cshtml" />
+    <Content Include="Views\Vieclam\EditViecLam.cshtml" />
+    <Content Include="Views\Vieclam\CreateVieclam.cshtml" />
+    <Content Include="Views\Vieclam\DeleteViecLam.cshtml" />
+    <Content Include="Views\Home\ThongTinUngVien.cshtml" />
+    <Content Include="Views\Vieclam\DanhSachUngTuyen.cshtml" />
+    <Content Include="Views\Vieclam\Guithongbao.cshtml" />
+    <Content Include="Views\Home\Thongbao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

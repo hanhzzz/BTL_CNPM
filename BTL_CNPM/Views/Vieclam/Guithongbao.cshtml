@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Guithongbao";
+    Layout = "~/Views/Shared/AccountMasterpage.cshtml";
+}
+
+<h2>Guithongbao</h2>
+<form class="" action="/ViecLam/Guithongbao" method="post">
+    <input type="hidden" class="form-control" name="sMaNV" value="@ViewBag.maNV" />
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="mathongbao">Ma thong bao</label>
+            <input type="text" class="form-control" id="mathongbao" name="sMaThongbao" placeholder="Ma thong bao" />
+        </div>
+        <div class="col-md-6">
+            <label for="ngaythongbao">Ngay thong bao</label>
+            <input type="date" class="form-control" id="ngaythongbao" name="dNgayThongbao" placeholder="Ngay thong bao" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="noidung">Noi dung</label>
+            <input type="text" class="form-control" id="noidung" name="sNoidung" placeholder="Noi dung" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 mx-3">Gui thong bao</button>
+</form>
+

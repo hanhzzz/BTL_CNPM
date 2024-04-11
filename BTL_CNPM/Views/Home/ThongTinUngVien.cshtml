@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "ThongTinUngVien";
+    var MaTK = Session["MaTk"];
+    Layout = "~/Views/Shared/HomeMasterpage.cshtml";
+}
+
+<h2>ThongTinUngVien</h2>
+<form class="" action="/Home/ThongTinUngVien" method="post">
+    <input type="hidden" class="form-control" name="sMaTK" value="@MaTK" />
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="manhanvien">Ma nhan vien</label>
+            <input type="text" class="form-control" id="manhanvien" name="sMaNV" placeholder="Ma nhan vien" />
+        </div>
+        <div class="col-md-6">
+            <label for="mahopdong">Ma hop dong</label>
+            <input type="text" class="form-control" id="mahopdong" name="sMaHD" placeholder="Ma hop dong" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="tennhanvien">Ten nhan vien</label>
+            <input type="text" class="form-control" id="tennhanvien" name="sTenNV" placeholder="Ten nhan vien" />
+        </div>
+        <div class="col-md-6">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="sEmail" placeholder="Email" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="CCCD">CCCD</label>
+            <input type="text" class="form-control" id="CCCD" name="iCCCD" placeholder="CCCD" />
+        </div>
+        <div class="col-md-6">
+            <label for="ngaysinh">Ngay sinh</label>
+            <input type="date" class="form-control" id="ngaysinh" name="dNgaysinh" placeholder="Ngay sinh" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="SDT">SDT</label>
+            <input type="text" class="form-control" id="SDT" name="iSDT" placeholder="SDT" />
+        </div>
+        <div class="col-md-6">
+            <label for="diachi">Dia chi</label>
+            <input type="text" class="form-control" id="diachi" name="sDiachi" placeholder="Diachi" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 mx-3">Xac nhan</button>
+</form>

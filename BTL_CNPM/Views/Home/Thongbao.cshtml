@@ -1,0 +1,25 @@
+﻿@model List<BTL_CNPM.Models.tblThongBao>
+@{
+    ViewBag.Title = "Thongbao";
+    Layout = "~/Views/Shared/HomeMasterpage.cshtml";
+}
+
+<h2>Thongbao</h2>
+<table class="table table-striped table-hover">
+    <tr>
+        <!-- TABLE HEADING -->
+        <th>Mã thông báo</th>
+        <th>Ngày thông báo</th>
+        <th>Nội dung</th>
+    </tr>
+    <!-- TABLE DATA -->
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.sMaThongbao</td>
+            <td>@item.dNgayThongbao.Value.ToString("yyyy-MM-dd")</td>
+            <td>@item.sNoidung</td>
+        </tr>
+    }
+</table>
+

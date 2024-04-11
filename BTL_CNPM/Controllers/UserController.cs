@@ -18,19 +18,18 @@ namespace BTL_CNPM.Controllers
         [HttpPost]
         public ActionResult ThemTaiKoan(String name, String taikhoan,String password)
         {
-            QlyViecLamEntities db=new QlyViecLamEntities();
+            QlyViecLamEntities1 db=new QlyViecLamEntities1();
             tblTaiKhoan tk=new tblTaiKhoan();
             DateTime currentTime=DateTime.Now;
             String newID=taikhoan+currentTime.Minute.ToString()+currentTime.Second.ToString();
 
             tk.sMaTK = newID;
-            tk.sMaNV = null;
-            tk.sMaQuyen = Convert.ToString(2);
+            tk.sMaQuyen = Convert.ToString(1);
             tk.sTaiKhoan = taikhoan;
             tk.sMatKhau = password;
             tk.sTinhTrang = "Xem xét";
 
-            db.tblTaiKhoans.Add(tk);
+            db.tblTaiKhoan.Add(tk);
             db.SaveChanges();
 
             Session["user"] = taikhoan;
@@ -43,8 +42,8 @@ namespace BTL_CNPM.Controllers
         [HttpPost]
         public ActionResult DangNhap(String taikhoan, String matkhau)
         {
-            QlyViecLamEntities db=new QlyViecLamEntities();
-            var prov=db.tblTaiKhoans.Where(s=>s.sTaiKhoan==taikhoan && s.sMatKhau==matkhau).ToList();
+            QlyViecLamEntities1 db=new QlyViecLamEntities1();
+            var prov=db.tblTaiKhoan.Where(s=>s.sTaiKhoan==taikhoan && s.sMatKhau==matkhau).ToList();
 
             if (prov==null)
             {
@@ -54,16 +53,28 @@ namespace BTL_CNPM.Controllers
             {
                 foreach(var item in prov)
                 {
-                    if (item.sMaQuyen == "1")
+                    Session["MaquyenUser"] = item.sMaQuyen;
+                    if (Session["MaquyenUser"].ToString() == "1")
                     {
                         Session["user"] = item.sTaiKhoan;
-                        Session["IDuser"] = item.sMaTK;
+                        Session["MaTK"] = item.sMaTK;
                         return RedirectToAction("QlyAccount");
                     }
                     else
                     {
                         Session["user"]=item.sTaiKhoan;
-                        Session["IDuser"] = item.sMaTK;
+                        Session["MaTK"] = item.sMaTK;
+                        string MaTK = Session["MaTK"].ToString();
+                        var currentNV = db.tblNhanVien.Where(row => row.sMaTK == MaTK).FirstOrDefault();
+                        if (currentNV != null)
+                        {
+                            Session["MaNV"] = currentNV.sMaNV;
+                        }
+                        else
+                        {
+                            Session["MaNV"] = null;
+                        }
+
                         return RedirectToAction("../Home/Index");
                     }
                 }
@@ -73,13 +84,9 @@ namespace BTL_CNPM.Controllers
         }
         public ActionResult QlyAccount()
         {
-            QlyViecLamEntities db = new QlyViecLamEntities();
+            QlyViecLamEntities1 db = new QlyViecLamEntities1();
 
-            return View(db.tblTaiKhoans.ToList());
-        }
-        public ActionResult QlyViecLam()
-        {
-            return View();
+            return View(db.tblTaiKhoan.ToList());
         }
         public ActionResult Logout()
         {
@@ -89,11 +96,10 @@ namespace BTL_CNPM.Controllers
         [HttpPost]
         public ActionResult CapNhatAccount(String mataikhoan,String taikhoan, String matkhau, String tinhtrang)
         {
-            QlyViecLamEntities db = new QlyViecLamEntities();
-            var updateAccount = db.tblTaiKhoans.Find(mataikhoan);
+            QlyViecLamEntities1 db = new QlyViecLamEntities1();
+            var updateAccount = db.tblTaiKhoan.Find(mataikhoan);
 
             updateAccount.sTaiKhoan = taikhoan;
-            updateAccount.sMaNV = null;
             updateAccount.sMatKhau=matkhau;
             updateAccount.sTinhTrang= tinhtrang;
 
@@ -104,11 +110,13 @@ namespace BTL_CNPM.Controllers
         [HttpPost]
         public ActionResult XoaAccount(String mataikhoan)
         {
-            QlyViecLamEntities db = new QlyViecLamEntities();
-            var deleteTK = db.tblTaiKhoans.Find(mataikhoan);
-            db.tblTaiKhoans.Remove(deleteTK);
+            QlyViecLamEntities1 db = new QlyViecLamEntities1();
+            var deleteTK = db.tblTaiKhoan.Find(mataikhoan);
+            db.tblTaiKhoan.Remove(deleteTK);
             db.SaveChanges();
             return RedirectToAction("./QlyAccount");
         }
+
+
     }
 }

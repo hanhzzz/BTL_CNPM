@@ -1,4 +1,4 @@
-﻿
+﻿@model List<BTL_CNPM.Models.tblThongTinTuyenDung>
 @{
     ViewBag.Title = "QlyViecLam";
     Layout = "~/Views/Shared/AccountMasterpage.cshtml";
@@ -13,67 +13,36 @@
         <table id="GFGtable" class="table table-striped table-hover">
             <tr>
                 <!-- TABLE HEADING -->
-                <th>STT</th>
-                <th>Tên công việc</th>
                 <th>Vị trí</th>
+                <th>Đối tượng</th>
+                <th>Ngày yêu cầu</th>
+                <th>Ngày hết hạn</th>
+                <th>Mô tả</th>
                 <th>Mức lương</th>
-                <th>Tác vụ</th>
+                <th>Đãi ngộ</th>
+                <th>Nơi làm việc</th>
             </tr>
             <!-- TABLE DATA -->
-            <tr>
-                <td class="">1</td>
-                <td class="gfgusername">Nguyễn Văn A</td>
-                <td class="gfgscores">a@gmail.com</td>
-                <td class="gfgarticles">1234</td>
-                <td>
-                    <button class="gfgselect btn btn-info"
-                            data-toggle="modal"
-                            data-target="#gfgmodal">
-                        Sửa
-                    </button>
-                    <button class="gfgselect btn btn-danger"
-                            data-toggle="modal"
-                            data-target="#deleteEmployeeModal">
-                        Xóa
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td class="">2</td>
-                <td class="gfgusername">Nguyễn Văn B</td>
-                <td class="gfgscores">b@gmail.com</td>
-                <td class="gfgarticles">1122</td>
-                <td>
-                    <button class="gfgselect btn btn-info"
-                            data-toggle="modal"
-                            data-target="#gfgmodal">
-                        Sửa
-                    </button>
-                    <button class="gfgselect btn btn-danger"
-                            data-toggle="modal"
-                            data-target="#deleteEmployeeModal">
-                        Xóa
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td class="gfgusername">3</td>
-                <td class="gfgusername">Nguyễn Văn C</td>
-                <td class="gfgscores">c@gmail.com</td>
-                <td class="gfgarticles">2222</td>
-                <td>
-                    <button class="gfgselect  btn btn-info"
-                            data-toggle="modal"
-                            data-target="#gfgmodal">
-                        Sửa
-                    </button>
-                    <button class="gfgselect btn btn-danger"
-                            data-toggle="modal"
-                            data-target="#deleteEmployeeModal">
-                        Xóa
-                    </button>
-                </td>
-            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.sVitri</td>
+                    <td>@item.sDoituong</td>
+                    <td>@item.dNgayyeucau</td>
+                    <td>@item.dNgayhethan</td>
+                    <td>@item.sMotaTD</td>
+                    <td>@item.iMucluong</td>
+                    <td>@item.sDaingo</td>
+                    <td>@item.sNoilamviec</td>
+                    <td>
+                        <a class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#gfgmodal">Sửa</a>
+                        <a class="btn btn-danger btn btn-primary" data-toggle="modal" data-target="#deleteEmployeeModal">Xóa</a>
+                        @*<a class="btn btn-primary" href="/Home/ThemDanhSachUngTuyen?sMaTD=@item.sMaTD">Danh sách ứng viên</a>*@
+                    </td>
+                </tr>
+            }
+
+
         </table>
     </section>
     <!-- Edit Modal HTML -->
@@ -102,10 +71,11 @@
                 <div class="modal-body">
                     <div class="GFGclass"
                          id="divGFG">
-                        <form action="./QlyAccount" method="post">
+                        <form action="./UpdateViecLam" method="post">
                             <div class="form-group">
-                                <label for="exampleInputText">Họ và tên</label>
-                                <input type="text" class="form-control" id="exampleInputText" placeholder="Enter email">
+                                <label for="exampleInputText">Vị trí</label>
+                                <input type="hidden" class="form-control" id="exampleInputMaVieclam" name="mavieclam">
+                                <input type="text" class="form-control" id="exampleInputText" value="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>

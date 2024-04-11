@@ -14,13 +14,20 @@ namespace BTL_CNPM.Models
     
     public partial class tblTaiKhoan
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblTaiKhoan()
+        {
+            this.tblNhanVien = new HashSet<tblNhanVien>();
+        }
+    
         public string sMaTK { get; set; }
-        public string sMaNV { get; set; }
         public string sMaQuyen { get; set; }
         public string sTaiKhoan { get; set; }
         public string sMatKhau { get; set; }
         public string sTinhTrang { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblNhanVien> tblNhanVien { get; set; }
         public virtual tblQuyenHan tblQuyenHan { get; set; }
     }
 }

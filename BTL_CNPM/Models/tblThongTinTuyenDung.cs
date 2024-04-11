@@ -12,18 +12,25 @@ namespace BTL_CNPM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblQuyenHan
+    public partial class tblThongTinTuyenDung
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblQuyenHan()
+        public tblThongTinTuyenDung()
         {
-            this.tblTaiKhoan = new HashSet<tblTaiKhoan>();
+            this.tblDanhSachUngTuyen = new HashSet<tblDanhSachUngTuyen>();
         }
     
-        public string sMaQuyen { get; set; }
-        public string sTenQuyen { get; set; }
+        public string sMaTD { get; set; }
+        public string sDoituong { get; set; }
+        public Nullable<System.DateTime> dNgayyeucau { get; set; }
+        public Nullable<System.DateTime> dNgayhethan { get; set; }
+        public string sMotaTD { get; set; }
+        public Nullable<int> iMucluong { get; set; }
+        public string sDaingo { get; set; }
+        public string sNoilamviec { get; set; }
+        public string sVitri { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblTaiKhoan> tblTaiKhoan { get; set; }
+        public virtual ICollection<tblDanhSachUngTuyen> tblDanhSachUngTuyen { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BTL_CNPM.Objects;
+﻿using BTL_CNPM.Models;
+using BTL_CNPM.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,24 +21,20 @@ namespace BTL_CNPM.Controllers
         }
         public ActionResult JobList()
         {
-            Jobs jb1 = new Jobs("jb1", "Chuyển viên nhân sự", "CMC Corp", "Nhân viên chính thức", "Thỏa thuận", "Hà Nội", new DateTime(2024, 4, 12), 2);
-            Jobs jb2 = new Jobs("jb2", "Chuyển viên Quản trị rủi ro", "CMC Corp", "Nhân viên chính thức", "Thỏa thuận", "Hà Nội", new DateTime(2024, 5, 1), 6);
-            Jobs jb3 = new Jobs("jb3", "Chuyển viên Phát triển dự án", "CMC Corp", "Nhân viên chính thức", "Thỏa thuận", "Hà Nội", new DateTime(2024, 4, 30), 7);
-            Jobs jb4 = new Jobs("jb4", "Chuyển viên Đầu tư công nghệ", "CMC Corp", "Nhân viên chính thức", "Thỏa thuận", "Hà Nội", new DateTime(2024, 4, 4), 2);
-            Jobs jb5 = new Jobs("jb5", "Chuyển viên Kinh doanh cho thuê văn phòng", "CMC Corp", "Nhân viên chính thức", "Thỏa thuận", "Hồ Chí Minh", new DateTime(2024, 5, 2), 9);
+            QlyViecLamEntities1 db = new QlyViecLamEntities1();
+            List<tblThongTinTuyenDung> listTTTuyendung = db.tblThongTinTuyenDung.ToList();
+            return View(listTTTuyendung);
+        }
 
-            List<Jobs> jobList = new List<Jobs>();
-            jobList.Add(jb1);
-            jobList.Add(jb2);
-            jobList.Add(jb3);
-            jobList.Add(jb4);
-            jobList.Add(jb5);
-            return View(jobList);
-        }
-        public ActionResult JobDetail()
+        //Chi tiet viec lam user view
+        public ActionResult JobDetail(string id)
         {
-            return View();
+            QlyViecLamEntities1 db = new QlyViecLamEntities1();
+            tblThongTinTuyenDung TTTuyendung = db.tblThongTinTuyenDung.Where(row => row.sMaTD == id).FirstOrDefault();
+            return View(TTTuyendung);
         }
+
+
         public ActionResult JobCategory()
         {
             return View();
@@ -54,5 +51,53 @@ namespace BTL_CNPM.Controllers
         {
             return View();
         }
+
+        //thong tin ung vien
+        public ActionResult ThongTinUngVien()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ThongTinUngVien(tblNhanVien Nhanvien)
+        {
+            QlyViecLamEntities1 db = new QlyViecLamEntities1();
+            Session["MaNV"] = Nhanvien.sMaNV;
+            db.tblNhanVien.Add(Nhanvien);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //them ung vien vao danh sach ung tuyen
+        [HttpGet]
+        public ActionResult ThemDanhSachUngTuyen(string sMaTD)
+        {
+            string MaNV;
+            QlyViecLamEntities1 db = new QlyViecLamEntities1();
+            tblDanhSachUngTuyen danhSachUngTuyen = new tblDanhSachUngTuyen();
+            if(Session["MaNV"] == null)
+            {
+                return RedirectToAction("ThongTinUngVien");
+            }
+            else
+            {
+                MaNV = Session["MaNV"].ToString();
+                danhSachUngTuyen.sMaTD = sMaTD;
+                danhSachUngTuyen.sMaNV = MaNV;
+                db.tblDanhSachUngTuyen.Add(danhSachUngTuyen);
+                db.SaveChanges();
+                return RedirectToAction("Joblist");
+            }
+        }
+   
+        //hien thi danh sach thong bao (user)
+        public ActionResult Thongbao()
+        {
+            QlyViecLamEntities1 db = new QlyViecLamEntities1();
+            string maNV = Session["MaNV"].ToString();
+            List<tblThongBao> listThongbao = db.tblThongBao.Where(row => row.sMaNV == maNV).ToList();
+            return View(listThongbao);
+        }
+
     }
 }

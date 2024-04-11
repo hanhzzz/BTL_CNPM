@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "CreateVieclam";
+    Layout = "~/Views/Shared/AccountMasterpage.cshtml";
+}
+
+<h2>Tạo mới việc làm</h2>
+<form class="" action="/ViecLam/CreateViecLam" method="post">
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="mavieclam">Mã việc làm</label>
+            <input type="text" class="form-control" id="mavieclam" name="sMaTD" placeholder="Mã việc làm" />
+        </div>
+        <div class="col-md-6">
+            <label for="vitri">Vị trí</label>
+            <input type="text" class="form-control" id="vitri" name="sVitri" placeholder="Vị trí" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="doituong">Đối tượng</label>
+            <input type="text" class="form-control" id="doituong" name="sDoituong" placeholder="Đối tượng" />
+        </div>
+        <div class="col-md-6">
+            <label for="mota">Mô tả</label>
+            <input type="text" class="form-control" id="mota" name="smotaTD" placeholder="Mô tả" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="ngayyeucau">Ngày yêu cầu</label>
+            <input type="date" class="form-control" id="ngayyeucau" name="dNgayyeucau" placeholder="Ngày yêu cầu" />
+        </div>
+        <div class="col-md-6">
+            <label for="ngayhethan">Ngày hết hạn</label>
+            <input type="date" class="form-control" id="ngayhethan" name="dNgayhethan" placeholder="Ngày hết hạn" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="mucluong">Mức lương</label>
+            <input type="text" class="form-control" id="mucluong" name="iMucluong" placeholder="Mức lương" />
+        </div>
+        <div class="col-md-6">
+            <label for="daingo">Đãi ngộ</label>
+            <input type="text" class="form-control" id="daingo" name="sDaingo" placeholder="Đãi ngộ" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+
+        <div class="col-md-6">
+            <label for="noilamviec">Nơi làm việc</label>
+            <input type="text" class="form-control" id="noilamviec" name="sNoilamviec" placeholder="Nơi làm việc" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 mx-3">Thêm mới</button>
+</form>

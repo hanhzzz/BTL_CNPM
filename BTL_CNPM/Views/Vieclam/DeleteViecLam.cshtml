@@ -1,0 +1,55 @@
+﻿@model BTL_CNPM.Models.tblThongTinTuyenDung
+@{
+    ViewBag.Title = "DeleteViecLam";
+    Layout = "~/Views/Shared/AccountMasterpage.cshtml";
+}
+
+<h2>Xóa việc làm</h2>
+<form class="" action="/ViecLam/DeleteViecLam/@Model.sMaTD" method="post">
+    <input type="hidden" class="form-control" id="maTD" name="sMaTD" value="@Model.sMaTD" />
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="vitri">Vị trí</label>
+            <input type="text" class="form-control" id="vitri" name="sVitri" value="@Model.sVitri" />
+        </div>
+        <div class="col-md-6">
+            <label for="mucluong">Mức lương</label>
+            <input type="text" class="form-control" id="mucluong" name="iMucluong" value="@Model.iMucluong" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="doituong">Đối tượng</label>
+            <input type="text" class="form-control" id="doituong" name="sDoituong" value="@Model.sDoituong" />
+        </div>
+        <div class="col-md-6">
+            <label for="mota">Mô tả </label>
+            <input type="text" class="form-control" id="mota" name="smotaTD" value="@Model.sMotaTD" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="ngayyeucau">Ngày yêu cầu</label>
+            <input type="date" class="form-control" id="ngayyeucau" name="dNgayyeucau" value="@Model.dNgayyeucau.Value.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="col-md-6">
+            <label for="ngayhethan">Ngày hết hạn</label>
+            <input type="date" class="form-control" id="ngayhethan" name="dNgayhethan" value="@Model.dNgayhethan.Value.ToString("yyyy-MM-dd")" />
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="daingo">Đãi ngộ</label>
+            <input type="text" class="form-control" id="daingo" name="sDaingo" value="@Model.sDaingo" />
+        </div>
+        <div class="col-md-6">
+            <label for="noilamviec">Nơi làm việc</label>
+            <input type="text" class="form-control" id="noilamviec" name="sNoilamviec" value="@Model.sNoilamviec" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 mx-3">Xóa</button>
+</form>
