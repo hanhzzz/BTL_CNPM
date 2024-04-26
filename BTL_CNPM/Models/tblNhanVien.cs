@@ -18,21 +18,17 @@ namespace BTL_CNPM.Models
         public tblNhanVien()
         {
             this.tblDanhSachUngTuyen = new HashSet<tblDanhSachUngTuyen>();
+            this.tblHoSoNhanVien = new HashSet<tblHoSoNhanVien>();
             this.tblThongBao = new HashSet<tblThongBao>();
         }
     
         public string sMaNV { get; set; }
         public string sMaTK { get; set; }
-        public string sMaHD { get; set; }
-        public string sTenNV { get; set; }
-        public string sEmail { get; set; }
-        public Nullable<int> iCCCD { get; set; }
-        public Nullable<System.DateTime> dNgaysinh { get; set; }
-        public Nullable<int> iSDT { get; set; }
-        public string sDiachi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDanhSachUngTuyen> tblDanhSachUngTuyen { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblHoSoNhanVien> tblHoSoNhanVien { get; set; }
         public virtual tblTaiKhoan tblTaiKhoan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblThongBao> tblThongBao { get; set; }

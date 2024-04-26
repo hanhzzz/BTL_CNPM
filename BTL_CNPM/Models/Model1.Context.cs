@@ -26,11 +26,9 @@ namespace BTL_CNPM.Models
         }
     
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<tblChucVu> tblChucVu { get; set; }
         public virtual DbSet<tblDanhSachUngTuyen> tblDanhSachUngTuyen { get; set; }
-        public virtual DbSet<tblHopDong> tblHopDong { get; set; }
+        public virtual DbSet<tblHoSoNhanVien> tblHoSoNhanVien { get; set; }
         public virtual DbSet<tblNhanVien> tblNhanVien { get; set; }
-        public virtual DbSet<tblPhongBan> tblPhongBan { get; set; }
         public virtual DbSet<tblQuyenHan> tblQuyenHan { get; set; }
         public virtual DbSet<tblTaiKhoan> tblTaiKhoan { get; set; }
         public virtual DbSet<tblThongBao> tblThongBao { get; set; }

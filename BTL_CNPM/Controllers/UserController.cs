@@ -1,5 +1,4 @@
 ﻿using BTL_CNPM.Models;
-using BTL_CNPM.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +23,7 @@ namespace BTL_CNPM.Controllers
             String newID=taikhoan+currentTime.Minute.ToString()+currentTime.Second.ToString();
 
             tk.sMaTK = newID;
-            tk.sMaQuyen = Convert.ToString(1);
+            tk.sMaQuyen = Convert.ToString(2);
             tk.sTaiKhoan = taikhoan;
             tk.sMatKhau = password;
             tk.sTinhTrang = "Xem xét";
@@ -35,6 +34,8 @@ namespace BTL_CNPM.Controllers
             Session["user"] = taikhoan;
             return RedirectToAction("../Home/Index");
         }
+
+        //dang nhap user view
         public ActionResult Login()
         {
             return View();

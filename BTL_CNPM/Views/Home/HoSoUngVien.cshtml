@@ -1,0 +1,61 @@
+﻿@model BTL_CNPM.Models.tblHoSoNhanVien
+@{
+    ViewBag.Title = "HoSoUngVien";
+    var MaTK = Session["MaTk"];
+    string MaNV = "NV" + MaTK;
+    Layout = "~/Views/Shared/HomeMasterpage.cshtml";
+}
+
+<h2 class="text-center">Hồ sơ ứng viên</h2>
+<form class="" action="/Home/HoSoUngVien" method="post">
+    <input type="hidden" class="form-control" name="sMaNV" value="@MaNV" />
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="tennhanvien">Tên nhân viên</label>
+            <input type="text" class="form-control" id="tennhanvien" name="sTenNV" placeholder="Tên nhân viên" value="@Model.sTenNV"/>
+        </div>
+        <div class="col-md-6">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="sEmail" placeholder="Email" value="@Model.sEmail"/>
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="CCCD">CCCD</label>
+            <input type="text" class="form-control" id="CCCD" name="iCCCD" placeholder="CCCD" value="@Model.iCCCD"/>
+        </div>
+        <div class="col-md-6">
+            <label for="ngaysinh">Ngày sinh</label>
+            <input type="date" class="form-control" id="ngaysinh" name="dNgaysinh" placeholder="Ngày sinh" value="@Model.dNgaysinh.Value.ToString("yyyy-MM-dd")"/>
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="SDT">Số điện thoại</label>
+            <input type="text" class="form-control" id="SDT" name="iSDT" placeholder="Số điện thoại" value="@Model.iSDT"/>
+        </div>
+        <div class="col-md-6">
+            <label for="diachi">Địa chỉ</label>
+            <input type="text" class="form-control" id="diachi" name="sDiachi" placeholder="Địa chỉ" value="@Model.sDiachi"/>
+        </div>
+    </div>
+
+    <div class="row mx-3 mt-3">
+        <div class="col-md-6">
+            <label for="hocvan">Học vấn và kỹ năng</label>
+            <input type="text" class="form-control" id="hocvan" name="sHocvan" placeholder="Học vấn và kỹ năng" value="@Model.sHocvan"/>
+        </div>
+        <div class="col-md-6">
+            <label for="kinhnghiem">Kinh nghiệm và thành tích</label>
+            <input type="text" class="form-control" id="kinhnghiem" name="sKinhnghiem" placeholder="Kinh nghiệm và thành tích" value="@Model.sKinhnghiem"/>
+        </div>
+    </div>
+
+    <a class="btn btn-primary mt-3 mx-3" style="color: white; text-decoration: none;" href="/Home/EditHoSo/@Model.sMaNV">Chỉnh sửa</a>
+    <button type="submit" class="text-center btn btn-success mt-3 mx-3">Xác nhận</button>
+</form>
+
+

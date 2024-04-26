@@ -9,15 +9,16 @@ namespace BTL_CNPM.Controllers
 {
     public class VieclamController : Controller
     {
-        // GET: Vieclam
-        public ActionResult AdminQlyViecLam()
+        // GET: Vieclam admin view
+        public ActionResult AdminQlyViecLam(string search="")
         {
             QlyViecLamEntities1 db = new QlyViecLamEntities1();
-            List<tblThongTinTuyenDung> tblThongTinTuyenDung = db.tblThongTinTuyenDung.ToList();
+            List<tblThongTinTuyenDung> tblThongTinTuyenDung = db.tblThongTinTuyenDung.Where(row => row.sVitri.Contains(search)).ToList();
+            ViewBag.search = search;
             return View(tblThongTinTuyenDung);
         }
 
-        //them tin tuyen dung
+        //them tin tuyen dung admin view
         public  ActionResult CreateVieclam()
         {
             return View();
@@ -32,7 +33,7 @@ namespace BTL_CNPM.Controllers
             return RedirectToAction("AdminQlyViecLam");
         }
 
-        //chinh sua tin tuyen dung
+        //chinh sua tin tuyen dung admin view
         public ActionResult EditViecLam(string id)
         {
             QlyViecLamEntities1 db = new QlyViecLamEntities1();
@@ -58,7 +59,7 @@ namespace BTL_CNPM.Controllers
             return RedirectToAction("AdminQlyViecLam");
         }
 
-        //xoa tin tuyen dung
+        //xoa tin tuyen dung admin view
         public ActionResult DeleteViecLam(string id)
         {
             QlyViecLamEntities1 db = new QlyViecLamEntities1();
@@ -81,13 +82,13 @@ namespace BTL_CNPM.Controllers
         {
             QlyViecLamEntities1 db = new QlyViecLamEntities1();
             List<tblDanhSachUngTuyen> listDanhSachUngTuyen = db.tblDanhSachUngTuyen.Where(row => row.sMaTD == sMaTD).ToList();
-            List<tblNhanVien> listNhanVienUngTuyen = new List<tblNhanVien>();
+            List<tblHoSoNhanVien> listHoSoUngTuyen = new List<tblHoSoNhanVien>();
             foreach(var item in listDanhSachUngTuyen)
             {
-                tblNhanVien Nhanvien = db.tblNhanVien.Where(row => row.sMaNV == item.sMaNV).FirstOrDefault();
-                listNhanVienUngTuyen.Add(Nhanvien);
+                tblHoSoNhanVien HosoNV = db.tblHoSoNhanVien.Where(row => row.sMaNV == item.sMaNV).FirstOrDefault();
+                listHoSoUngTuyen.Add(HosoNV);
             }
-            return View(listNhanVienUngTuyen);
+            return View(listHoSoUngTuyen);
         }
 
         //admin gui thong bao cho ung vien (admin)

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3eeda962941341599fab65d607d60fad" Name="Diagram1">
+        <EntityTypeShape EntityType="QlyViecLamModel1.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QlyViecLamModel1.tblDanhSachUngTuyen" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QlyViecLamModel1.tblHoSoNhanVien" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="QlyViecLamModel1.tblNhanVien" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QlyViecLamModel1.tblQuyenHan" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QlyViecLamModel1.tblTaiKhoan" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QlyViecLamModel1.tblThongBao" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QlyViecLamModel1.tblThongTinTuyenDung" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="QlyViecLamModel1.FK__tblDanhSa__sMaNV__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="QlyViecLamModel1.FK__tblDanhSa__sMaTD__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="QlyViecLamModel1.FK__tblHoSoNh__sMaNV__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="QlyViecLamModel1.FK__tblNhanVi__sMaTK__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="QlyViecLamModel1.FK__tblThongB__sMaNV__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="QlyViecLamModel1.FK__tblTaiKho__sMaQu__38996AB5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

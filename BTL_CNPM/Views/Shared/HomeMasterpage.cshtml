@@ -58,27 +58,14 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto p-4 p-lg-0">
                         <a href="/Home/Index" class="nav-item nav-link">Trang chủ</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tuyển dụng</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="/Home/JobList" class="dropdown-item">Danh sách việc làm</a>
-                                @*<a href="/Home/Thongbao" class="dropdown-item">Thong bao</a>*@
-                            </div>
-                        </div>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Trang</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                @*<a href="/Home/JobCategory" class="dropdown-item">Kho việc làm</a>*@
-                                <a href="/Home/Testimonial" class="dropdown-item">Testimonial</a>
-                                <a href="/Home/Error404" class="dropdown-item">404</a>
-                            </div>
-                        </div>
+                        <a href="/Home/JobList" class="nav-item nav-link">Tuyển dụng</a>
                         <a href="/Home/Contact" class="nav-item nav-link">Liên hệ</a>
+                        <a href="/Home/HoSoUngVien" class="nav-item nav-link">Hồ sơ</a>
                         <a href="/Home/Thongbao" class="nav-item nav-link">Thông báo</a>
                     </div>
                     @if (Session["user"] != null)
                     {
-                        <a href="/Home/ThongTinUngVien" class="btn btn-success rounded-0 py-4 px-lg-5 d-none d-lg-block">@Session["user"].ToString()</a>
+                        <a href="#" class="btn btn-success rounded-0 py-4 px-lg-5 d-none d-lg-block">@Session["user"].ToString()</a>
                         <a href="../User/Logout" class="btn btn-success rounded-0 py-4 px-lg-5 d-none d-lg-block">Đăng Xuất</a>
                     }
                     else
@@ -127,10 +114,6 @@
                         <div class="col-lg-3 col-md-6">
                             <h5 class="text-white mb-4">ỨNG TUYỂN</h5>
                             <p>Đăng kí ứng tuyển ngay hôm nay!</p>
-@*                            <div class="position-relative mx-auto" style="max-width: 400px;">
-                                <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                                <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                            </div>*@
                         </div>
                     </div>
                 </div>

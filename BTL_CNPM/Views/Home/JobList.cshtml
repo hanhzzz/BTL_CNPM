@@ -8,6 +8,11 @@
 <div class="container-xxl py-5">
     <div class="container">
         <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Danh sách tuyển dụng</h1>
+        <form class="d-flex flex-row align-items-center flex-wrap center" action="/Home/JobList">
+            <label for="search" class="mx-2 my-1">Tìm kiếm việc làm</label>
+            <input type="search" class="form-control w-auto" id="search" name="search" placeholder="Nhập thông tin..." value="@ViewBag.search" />
+            <button type="submit" class="btn btn-primary mx-2">Tìm kiếm</button>
+        </form>
         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                 <li class="nav-item">
@@ -38,8 +43,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                     <div class="d-flex mb-3">
-                                        <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
-                                        <a class="btn btn-primary" href="/Home/ThemDanhSachUngTuyen?sMaTD=@item.sMaTD">Nộp đơn</a>
+                                        <a class="text-center btn btn-primary" href="/Home/ThemDanhSachUngTuyen?sMaTD=@item.sMaTD">Nộp đơn</a>
                                     </div>
                                     <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Hạn nộp: @item.dNgayhethan.Value.ToString("yyyy-MM-dd")</small>
                                 </div>

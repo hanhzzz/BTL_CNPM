@@ -8,7 +8,7 @@ create table tblQuyenHan(
 )
 
 create table tblTaiKhoan(
-	sMaTK varchar(10) primary key,
+	sMaTK varchar(50) primary key,
 	sMaQuyen varchar(10),
 	sTaiKhoan varchar(20),
 	sMatKhau varchar(20),
@@ -19,21 +19,15 @@ select * from tblTaiKhoan
 
 create table tblNhanVien
 (
-	sMaNV varchar(10) primary key,
-	sMaTK varchar(10),
-	sMaHD varchar(10),
-	sTenNV nvarchar(50),
-	sEmail varchar(50),
-	iCCCD int,
-	dNgaysinh date,
-	iSDT int,
-	sDiachi nvarchar(100),
+	sMaNV varchar(50) primary key,
+	sMaTK varchar(50),
 
 	foreign key (sMaTK) references tblTaikhoan(sMaTK)
-
 )
+
+
 select * from tblNhanVien
-delete tblNhanVien where sMaNV='NV1'
+delete tblNhanVien where sMaNV='1'
 
 create table tblThongTinTuyenDung
 (
@@ -56,46 +50,46 @@ values
 select * from tblThongTinTuyenDung
 delete from tblThongTinTuyenDung where sMaTD = 'TD2'
 
+create table tblDanhSachUngTuyen
+(
+	iMaDanhsach int primary key identity(1,1),
+	sMaTD varchar(10),
+	sMaNV varchar(50),
+	foreign key (sMaTD) references tblThongTinTuyenDung(sMaTD),
+	foreign key (sMaNV) references tblNhanVien(sMaNV)
+)
+
 create table tblThongBao
 (
 	sMaThongbao varchar(10) primary key,
-	sMaNV varchar(10),
+	sMaNV varchar(50),
 	dNgayThongbao date,
 	sNoidung nvarchar(500),
 
 	foreign key (sMaNV) references tblNhanVien(sMaNV)
 )
 
-create table tblHopDong
+create table tblHoSoNhanVien
 (
-	sMaHD varchar(10) primary key,
-	dNgayky date,
-	sThoihan nvarchar(10),
-	sMachucvu varchar(10),
-	sMaphongban varchar(10),
-	iLuong int,
-)
+	iMaHoSoNV int primary key identity(1,1),
+	sMaNV varchar(50),
+	sTenNV nvarchar(50),
+	sEmail varchar(50),
+	iCCCD int,
+	dNgaysinh date,
+	iSDT int,
+	sDiachi nvarchar(100),
+	sHocvan nvarchar(300),
+	sKinhnghiem nvarchar(300),
 
-create table tblPhongBan
-(
-	sMaphongban varchar(10) primary key,
-	sTenphongban nvarchar(50)
-)
-
-create table tblChucVu
-(
-	sMachucvu varchar(10) primary key,
-	sTenchucvu nvarchar(50)
-)
-
-create table tblDanhSachUngTuyen
-(
-	iMaDanhsach int primary key identity(1,1),
-	sMaTD varchar(10),
-	sMaNV varchar(10),
-	foreign key (sMaTD) references tblThongTinTuyenDung(sMaTD),
 	foreign key (sMaNV) references tblNhanVien(sMaNV)
 )
+
+select * from tblHoSoNhanVien
+select * from tblNhanVien
+select * from tblTaiKhoan
+
+delete from tblTaiKhoan where sMaTK = 'abc12142'
 
 select * from tblQuyenHan
 
@@ -112,7 +106,7 @@ values
 select * from tblTaiKhoan
 
 select * from tblNhanVien
-delete tblNhanVien where sMaNV = 'NV1'
+delete tblNhanVien where sMaNV = '1'
 
 select * from tblDanhSachUngTuyen
 delete from tblDanhSachUngTuyen
